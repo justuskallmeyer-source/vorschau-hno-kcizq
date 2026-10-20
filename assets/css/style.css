@@ -118,8 +118,10 @@ body.menu-open { overflow: hidden; }
 .hero-hours { font-size: 16px; color: var(--muted); margin: 0 0 10px; }
 .hero-tel { display: block; font-size: clamp(28px, 2.4vw, 34px); font-weight: 600; font-stretch: 85%; color: var(--ink); text-decoration: none; margin-bottom: 20px; }
 .hero-btns { display: flex; flex-wrap: wrap; gap: 10px; }
-.hero-photo { position: relative; min-height: 460px; }
+.hero-photo { position: relative; min-height: 460px; overflow: hidden; }
 .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 72% 50%; }
+.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .4s; }
+.has-motion .hero-canvas { opacity: 1; }
 
 /* Sprechzeiten */
 .status { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 14px; font-size: 15px; font-weight: 600; color: var(--ink); }
