@@ -120,7 +120,7 @@ body.menu-open { overflow: hidden; }
 .hero-tel { display: block; font-size: clamp(28px, 2.4vw, 34px); font-weight: 600; font-stretch: 85%; color: var(--ink); text-decoration: none; margin-bottom: 18px; }
 .hero-btns { display: flex; flex-wrap: wrap; gap: 10px; }
 .hero-group { max-width: 1440px; margin: clamp(32px, 4vw, 56px) auto 0; padding: 0 var(--gut); }
-.hero-group img { width: 100%; height: auto; aspect-ratio: 2280 / 1300; object-fit: cover; }
+.hero-group img { width: 100%; height: auto; aspect-ratio: 5504 / 3072; object-fit: cover; }
 
 /* Sprechzeiten */
 .status { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 14px; font-size: 15px; font-weight: 600; color: var(--ink); }
@@ -410,7 +410,7 @@ a.doc-card:hover h3 { text-decoration: underline; text-underline-offset: 5px; }
   .foot-grid { grid-template-columns: 1fr 1fr; }
   .ph-media img, .team-fig img { aspect-ratio: 4 / 3; }
   .hero-group { padding: 0; }
-  .hero-group img { aspect-ratio: 1620 / 1140; }
+  .hero-group img { aspect-ratio: 3 / 2; }
   .doc-small { grid-template-columns: 100px 1fr; }
   .head-cta .btn-sm { display: none; }
   .gl-bar { position: static; }
