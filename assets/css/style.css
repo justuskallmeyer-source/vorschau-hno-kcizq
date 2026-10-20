@@ -96,7 +96,7 @@ body.menu-open { overflow: hidden; }
 .sec { padding: clamp(56px, 7vw, 100px) 0; }
 .sec + .sec { padding-top: 0; }
 .sec-grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 24px clamp(24px, 4vw, 64px); border-top: 1px solid var(--rule-dark); padding-top: 22px; }
-.sec-grid > .label { padding-top: 4px; }
+.sec-grid > .label { padding-top: 2px; font-size: clamp(22px, 2vw, 28px); font-weight: 600; font-stretch: 84%; line-height: 1.12; letter-spacing: -.01em; }
 .sec-grey { background: var(--bg-2); }
 .sec-grey + .sec, .sec + .sec-grey, .sec-band + .sec, .sec + .sec-band { padding-top: clamp(56px, 7vw, 100px); }
 .sec-band { background: var(--navy); color: #C9CED6; }
@@ -120,8 +120,6 @@ body.menu-open { overflow: hidden; }
 .hero-btns { display: flex; flex-wrap: wrap; gap: 10px; }
 .hero-photo { position: relative; min-height: 460px; overflow: hidden; }
 .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 72% 50%; }
-.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .4s; }
-.has-motion .hero-canvas { opacity: 1; }
 
 /* Sprechzeiten */
 .status { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 14px; font-size: 15px; font-weight: 600; color: var(--ink); }
@@ -293,6 +291,87 @@ body.menu-open { overflow: hidden; }
 .foot-note { font-size: 15px; }
 .foot-base { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 14.5px; }
 .foot-base p { margin: 0; display: flex; gap: 22px; }
+
+/* ---------- Startseite: Bausteine */
+/* Bild randlos auf einer Seite, Text auf der anderen */
+.sb { display: grid; grid-template-columns: 1fr 1fr; min-height: min(86vh, 820px); }
+.sb-media { position: relative; min-height: 420px; }
+.sb-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sb-text { align-self: center; padding: clamp(56px, 7vw, 110px) max(var(--gut), calc((100vw - var(--wrap)) / 2 + var(--gut))) clamp(56px, 7vw, 110px) clamp(32px, 5vw, 88px); max-width: calc(var(--wrap) / 2 + 200px); }
+.sb-text p:not(.kicker) { color: var(--muted); }
+.sb-rev .sb-media { order: 2; }
+.sb-rev .sb-text { padding-left: max(var(--gut), calc((100vw - var(--wrap)) / 2 + var(--gut))); padding-right: clamp(32px, 5vw, 88px); justify-self: end; }
+.sb-dark { background: var(--navy); color: #C9CED6; }
+.sb-dark .h2, .sb-dark .more { color: #fff; }
+.sb-dark .sb-text p:not(.kicker), .sb-dark .plain li { color: #C9CED6; }
+.sb-dark .kicker { color: #AEB5BF; }
+.sb-dark .plain li { border-color: rgba(255, 255, 255, .16); }
+.plain { list-style: none; margin: 8px 0 26px; padding: 0; }
+.plain li { padding: 10px 0; border-top: 1px solid var(--rule); font-size: 16.5px; color: var(--text); }
+.plain li:last-child { border-bottom: 1px solid var(--rule); }
+.sb-dark .plain li:last-child { border-bottom-color: rgba(255, 255, 255, .16); }
+
+/* Blöcke mit großer Überschrift links und Einleitung rechts */
+.blk { padding: clamp(72px, 9vw, 130px) 0; }
+.blk-grey { background: var(--bg-2); }
+.blk-head { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 24px clamp(24px, 4vw, 64px); align-items: end; padding-bottom: clamp(32px, 4vw, 52px); }
+.blk-head .h2 { margin: 0; font-size: clamp(40px, 4.6vw, 68px); line-height: .98; }
+.blk-head p { margin: 0; color: var(--muted); max-width: 620px; font-size: clamp(17px, 1.3vw, 19px); }
+
+/* Leistungen als Raster */
+.tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule-dark); }
+.tile { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 24px 28px 30px 0; border-bottom: 1px solid var(--rule); text-decoration: none; transition: background .2s; }
+.tiles li:not(:nth-child(3n + 1)) .tile { padding-left: 28px; border-left: 1px solid var(--rule); }
+.tile-t { font-size: clamp(21px, 1.8vw, 25px); font-weight: 600; font-stretch: 84%; line-height: 1.15; color: var(--ink); }
+.tile-t::after { content: " \2192"; opacity: 0; transition: opacity .2s; }
+.tile:hover .tile-t::after { opacity: 1; }
+.tile-p { font-size: 15.5px; color: var(--muted); }
+.tile-all { background: var(--navy); }
+.tile-all .tile-t { color: #fff; }
+.tile-all .tile-t::after { opacity: 1; }
+.tile-all .tile-p { color: #C9CED6; }
+.tiles li:nth-child(3n + 1) .tile-all { padding-left: 28px; }
+
+/* Ärzte */
+a.doc-card { text-decoration: none; display: block; }
+a.doc-card:hover h3 { text-decoration: underline; text-underline-offset: 5px; }
+.docs-2 .doc-card img { aspect-ratio: 5 / 6; }
+
+/* Engagement */
+.mit-row { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
+.mit-row img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.mit-row p:not(.kicker) { color: var(--muted); max-width: 560px; }
+
+/* Anfahrt */
+.visit { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(20px, 3vw, 40px); align-items: start; }
+.visit-card { background: #fff; padding: 28px 30px 30px; }
+.visit-card address { font-size: 20px; line-height: 1.45; color: var(--ink); margin-bottom: 14px; }
+.visit .map img { border: 0; }
+
+/* Fuß dunkel */
+.site-foot { background: var(--ink); color: #B9BFC7; margin-top: 0; }
+.site-foot a:hover { color: #fff; }
+.foot-grid { border-top-color: rgba(255, 255, 255, .5); }
+.foot-h { color: #fff; }
+.foot-brand .logo, .foot-brand .logo-type { color: #E6E8EB; }
+.foot-base { border-top-color: rgba(255, 255, 255, .14); }
+
+@media (max-width: 1020px) {
+  .sb { grid-template-columns: 1fr; min-height: 0; }
+  .sb-media { min-height: 0; aspect-ratio: 4 / 3; }
+  .sb-rev .sb-media { order: 0; }
+  .sb-text, .sb-rev .sb-text { padding: 44px var(--gut) 56px; max-width: none; justify-self: stretch; }
+  .blk-head, .mit-row, .visit { grid-template-columns: 1fr; }
+  .tiles { grid-template-columns: 1fr 1fr; }
+  .tiles li .tile, .tiles li:not(:nth-child(3n + 1)) .tile { padding: 22px 22px 26px 0; border-left: 0; }
+  .tiles li:nth-child(2n) .tile { padding-left: 22px; border-left: 1px solid var(--rule); }
+  .tiles li .tile-all { padding-left: 22px; }
+}
+@media (max-width: 700px) {
+  .tiles { grid-template-columns: 1fr; }
+  .tiles li:nth-child(2n) .tile { padding-left: 0; border-left: 0; }
+  .blk-head .h2 { font-size: 40px; }
+}
 
 /* ---------- Responsiv */
 @media (max-width: 1180px) {
